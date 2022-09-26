@@ -1,0 +1,27 @@
+{
+  "name": "pcat",
+  "version": "1.0.0",
+  "description": "PCAT Photo Web App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aihsanbozaci/PCAT.git"
+  },
+  "keywords": [
+    "photo",
+    "web",
+    "app"
+  ],
+  "author": "Ahmet İhsan Bozacı",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aihsanbozaci/PCAT/issues"
+  },
+  "homepage": "https://github.com/aihsanbozaci/PCAT#readme",
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
+}
