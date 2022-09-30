@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const fileUpload = require("express-fileupload");
-const methodOverride = require("method-override");
+const methodOverride = require("method-override"); //OVERRIDE Methodları Middleware olarak tanımlamak şart
 const fs = require("fs");
 //connect MongoDB with Mongoose
 const mongoose = require("mongoose");
@@ -15,6 +15,7 @@ const ejs = require("ejs");
 const path = require("path");
 
 const Photo = require("./models/Photo");
+const { timeStamp } = require("console");
 //TEMPLATE ENGINE
 app.set("view engine", "ejs");
 
@@ -23,7 +24,11 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true })); //response form (reading url data)
 app.use(express.json()); //converting data to json file to read
 app.use(fileUpload());
-app.use(methodOverride("_method"));
+app.use(
+  methodOverride("_method", {
+    methods: ["POST", "GET"],
+  })
+);
 
 //ROUTES (path directory)
 app.get("/", async (req, res) => {
@@ -67,14 +72,18 @@ app.post("/photos", async (req, res) => {
     fs.mkdirSync(uploadDir);
   }
 
-  let uploadedImage = req.files.image;
-  let uploadPath = __dirname + "/public/uploads/" + uploadedImage.name;
-  uploadedImage.mv(uploadPath, async () => {
-    await Photo.create({
-      ...req.body,
-      image: "/uploads/" + uploadedImage.name,
-    });
-    res.redirect("/");
+  const photo = await Photo.create({
+    ...req.body,
+  });
+
+  let uploadedImage = req.files.image.name.split('.');
+  let uploadedImageName = uploadedImage[0] + photo._id + '.' + uploadedImage[1];
+  let path = __dirname + '/public/uploads/' + uploadedImageName;
+
+  req.files.image.mv(path, async () => {
+    photo.image = '/uploads/' + uploadedImageName;
+    await photo.save();
+    res.redirect('/');
   });
 });
 
@@ -84,7 +93,16 @@ app.put("/photos/:id", async (req, res) => {
   photo.title = req.body.title;
   photo.description = req.body.description;
   photo.save();
-  res.redirect(`/photos/${req.params.id}`)
+  res.redirect(`/photos/${req.params.id}`);
+});
+//DELETE METHOD (GET OVERRIDE)
+app.delete("/photos/:id", async (req, res) => {
+  //console.log(req.params.id);
+  const photo = await Photo.findOne({ _id: req.params.id });
+  let deletedImage = __dirname + "/public" + photo.image;
+  fs.unlinkSync(deletedImage);
+  await Photo.findByIdAndRemove(req.params.id);
+  res.redirect("/");
 });
 
 const port = 3000;
