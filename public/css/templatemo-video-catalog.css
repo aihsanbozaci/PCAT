@@ -48,16 +48,7 @@ h2, p { color: #666666; }
 .tm-site-logo { font-size: 3rem; }
 .tm-site-name { font-size: 1.9rem; }
 
-#tm-video-container {
-    max-height: 720px;
-    overflow: hidden;
-    background-color: #333;
-}
 
-#tm-video {
-    width: 100%;
-    height: auto;
-}
 
 .tm-bg-black {
     background-color: rgba(0,0,0,0.5);
@@ -478,10 +469,6 @@ video {
     .tm-welcome-container-inner { margin-top: 150px; }
     .tm-welcome-text { font-size: 1.4rem; }
 
-    #tm-video {
-        width: 888px;
-        height: 500px;
-    }
 
     .tm-logo-container {
         height: 160px;

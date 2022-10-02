@@ -146,3 +146,5 @@ dist
 views/partials/note.txt
 test.js
 .prettierrc
+public/img/select-arrow.png
+.gitignore

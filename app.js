@@ -8,7 +8,7 @@ const pageController = require("./controllers/pageControllers");
 //connect MongoDB with Mongoose
 const mongoose = require("mongoose");
 const Photo = require("./models/Photo");
-mongoose.connect("mongodb://localhost/pcat-test-db", {
+mongoose.connect('mongodb+srv://rohleder00:r6_v6B7DhgEDpw4@cluster0.qosy2zw.mongodb.net/pcat-db?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -46,7 +46,7 @@ app.put("/photos/:id", photoController.updatePhoto);
 app.delete("/photos/:id", photoController.deletePhoto);
 
 //Server
-const port = 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`>>Server started at port ${port}`);
 });
