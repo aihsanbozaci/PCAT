@@ -8,7 +8,7 @@ const pageController = require("./controllers/pageControllers");
 //connect MongoDB with Mongoose
 const mongoose = require("mongoose");
 const Photo = require("./models/Photo");
-mongoose.connect('mongodb+srv://rohleder00:r6_v6B7DhgEDpw4@cluster0.qosy2zw.mongodb.net/pcat-db?retryWrites=true&w=majority', {
+mongoose.connect('"mongodb://localhost/pcat-test-db"', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
