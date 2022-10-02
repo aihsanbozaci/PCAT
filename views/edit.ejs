@@ -39,12 +39,12 @@
                   <form action="/photos/<%= photo._id %>?_method=PUT" method="POST" class="tm-contact-form" enctype="multipart/form-data">
                     <div class="form-group">
                                                     <!-- Fotoğraf bilgisini çekiyoruz -->
-                      <input type="text" name="title" value="<%= photo.title %>" class="form-control rounded-0" placeholder="Photo Title"
+                      <input type="text" name="title" value="<%= photo.title %>" class="form-control rounded-0" placeholder="Photo Title" maxlength="30"
                         required />
                     </div>
                     <div class="form-group">
                       <textarea rows="8" name="description" class="form-control rounded-0"
-                        placeholder="Write a description.." required> <%= photo.description %> </textarea>
+                        placeholder="Write a description.." maxlength="305" required> <%= photo.description %> </textarea>
                     </div>
                     
                     <div class="form-group mb-0">
