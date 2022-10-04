@@ -1,6 +1,23 @@
 # PCAT
-Node.js Backend Website with Express - MongoDB 
-
+## Node.js Backend Website 
+### Libraries I use:
+  [· Node](https://nodejs.org/en/)
+  
+  [· express](http://expressjs.com/)
+  
+  [· express-fileupload](https://www.npmjs.com/package/express-fileupload)
+  
+  [· fs](https://nodejs.org/api/fs.html)
+  
+  [· ejs](https://ejs.co/)
+  
+  [· mongoose ](https://mongoosejs.com/)
+  
+  [· method-override](https://www.npmjs.com/package/method-override)
+  
+ Database: [MongoDB Atlas](https://www.mongodb.com/atlas/database)
+  
+  
 Live Demo: https://pcat-web-application.herokuapp.com/
 
 Template from: https://templatemo.com/
